@@ -12,7 +12,7 @@ fs.readFile('./docs/blog1.txt', (err, data) => {
     console.log(data.toString());
 });
 
-//writins files
+//writting files
 
 fs.writeFile('./docs/blog1.txt', 'Hello world', (err) => {
     if (err) {
@@ -31,11 +31,35 @@ fs.writeFile('./docs/blog2.txt', 'Hello world again', (err) => {
 });
 
 // directories
-fs.mkdir('./assets', (err) => {
-    if (err) {
-        console.log(err)
-    } else {
-        console.log('successfully directory made');
-    }
-})
+if (!fs.existsSync('./assets')) {
+    fs.mkdir('./assets', (err) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('successfully directory made');
+        }
+    })
+} else {
+    fs.rmdir('./assets', (err) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('successfully directory deleted');
+        }
+    })
+}
+
+
 //deleteng files
+
+if (fs.existsSync('./docs/blog2.txt')) {
+    fs.unlink('./docs/blog2.txt', (err) => {
+        if (err) {
+            console.log('Error deleting file:', err);
+        } else {
+            console.log('File deleted successfully');
+        }
+    });
+} else {
+    console.log('File does not exist');
+}
