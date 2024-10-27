@@ -59,25 +59,3 @@ server.listen(3000, 'localhost', () => {
 
 
 
-// Original array 
-let array = [1, 2, 2, 3, 4]
-
-// Printing original array  
-console.log("Array : ", array)
-
-// Looking for value 3 from Last index   
-let index = _.lastIndexOf(array, 2)
-
-// Printing the Index of the value  
-console.log("Index : ", index)
-
-
-
-let hold = _.once(function (trap) {
-    console.log(trap + '!');
-});
-
-// Calling hold multiple times
-hold('Logged in to the console');
-hold('GfG');
-hold('CS');
